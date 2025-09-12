@@ -1,6 +1,6 @@
 data Nat = Zero | Suc Nat deriving (Show, Eq)
 
-um   = Suc Zero
+um = Suc Zero
 dois = Suc um
 tres = Suc dois
 quatro = Suc tres
@@ -20,10 +20,10 @@ natAdd Zero n = n
 natAdd (Suc m) n  = Suc (natAdd m n)
 
 natSub :: Nat -> Nat -> Nat
-natSub n Zero         = n
-natSub Zero _         = Zero
+natSub n Zero = n
+natSub Zero _ = Zero
 natSub (Suc m) (Suc n) = natSub m n
 
 natMul :: Nat -> Nat -> Nat
-natMul Zero _     = Zero
-natMul (Suc m) n  = natAdd n (natMul m n)
+natMul Zero _ = Zero
+natMul (Suc m) n = natAdd n (natMul m n)
