@@ -1,3 +1,23 @@
+-- Exemplos de uso das funções:
+
+-- Conversão Nat -> Integer
+-- nat2integer um       -- Resultado: 1
+-- nat2integer dois     -- Resultado: 2
+-- nat2integer (Suc quatro) -- Resultado: 5
+
+-- Conversão Integer -> Nat
+-- integer2nat 3        -- Resultado: Suc (Suc (Suc Zero))
+-- integer2nat 0        -- Resultado: Zero
+
+-- Soma
+-- natAdd dois tres     -- Resultado: Suc (Suc (Suc (Suc (Suc Zero)))) (ou seja, 5)
+
+-- Subtração
+-- natSub tres um       -- Resultado: Suc (Suc Zero) (ou seja, 2)
+-- natSub um tres       -- Resultado: Zero
+
+-- Multiplicação
+-- natMul dois tres     -- Resultado: Suc (Suc (Suc (Suc (Suc (Suc Zero))))) (ou seja, 6)
 data Nat = Zero | Suc Nat deriving (Show, Eq)
 
 um = Suc Zero
