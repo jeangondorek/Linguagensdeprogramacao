@@ -8,6 +8,9 @@ import Lexer
 %tokentype { Token } 
 %error { parseError }
 
+%left '+' '-'
+%left '*'
+
 %token
     num        { TokenNum $$ }
     true       { TokenTrue }
