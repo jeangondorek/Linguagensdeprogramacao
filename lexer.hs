@@ -12,6 +12,16 @@ data Token = TokenNum Int
            | TokenRParen
            deriving Show
 
+Data Expr = Num Int
+          | BTrue
+          | BFalse
+          | Add Expr Expr
+          | Times Expr Expr 
+          | And Expr Expr 
+          | Or Expr Expr
+          | Paren Expr  
+          deriving Show
+
 lexer :: String -> [Token]
 lexer [] = []
 lexer ('+':cs) = TokenPlus : lexer cs
