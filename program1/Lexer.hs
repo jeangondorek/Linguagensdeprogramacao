@@ -1,46 +1,46 @@
-module Lexer where
-import Data.Char (isSpace, isDigit, isAlpha)
+module Lexer where 
 
-data Token = TokenNum Int
-           | TokenPlus
-           | TokenTrue
+import Data.Char 
+
+data Token = TokenNum Int 
+           | TokenTrue 
            | TokenFalse
-           | TokenAnd
-           | TokenOr
-           | TokenTimes
-           | TokenLParen
-           | TokenRParen
-           deriving Show
+           | TokenPlus 
+           | TokenMinus
+           | TokenTimes 
+           | TokenAnd 
+           | TokenOr 
+           | TokenLParen 
+           | TokenRParen 
+           deriving Show 
 
-Data Expr = Num Int
-          | BTrue
-          | BFalse
-          | Add Expr Expr
+data Expr = Num Int 
+          | BTrue 
+          | BFalse 
+          | Add Expr Expr 
           | Times Expr Expr 
           | And Expr Expr 
-          | Or Expr Expr
-          | Paren Expr  
-          deriving Show
+          | Or Expr Expr 
+          | Paren Expr 
+          deriving Show 
 
 lexer :: String -> [Token]
 lexer [] = []
-lexer ('+':cs) = TokenPlus : lexer cs
-lexer ('*':cs) = TokenTimes : lexer cs
-lexer ('(':cs) = TokenLParen : lexer cs
+lexer ('+':cs) = TokenPlus : lexer cs 
+lexer ('-':cs) = TokenMinus : lexer cs 
+lexer ('*':cs) = TokenTimes : lexer cs 
+lexer ('(':cs) = TokenLParen : lexer cs 
 lexer (')':cs) = TokenRParen : lexer cs
-lexer ('&':'&':cs) = TokenAnd : lexer cs
-lexer ('|':'|':cs) = TokenOr : lexer cs
-lexer (c:cs) | isSpace c = lexer cs
+lexer ('&':'&':cs) = TokenAnd : lexer cs 
+lexer ('|':'|':cs) = TokenOr : lexer cs  
+lexer (c:cs) | isSpace c = lexer cs 
              | isDigit c = lexNum (c:cs)
              | isAlpha c = lexKw (c:cs)
 lexer _ = error "Lexical error"
 
-lexNum cs = case span isDigit cs of
-                (num, rest) -> TokenNum (read num) : lexer rest
+lexNum cs = case span isDigit cs of 
+              (num, rest) -> TokenNum (read num) : lexer rest 
 
-
-lexKw cs = case span isAlpha cs of
-            ("true", rest) -> TokenTrue : lexer rest
-            ("false", rest) -> TokenFalse : lexer rest
-
-                
+lexKw cs = case span isAlpha cs of 
+             ("true", rest) -> TokenTrue : lexer rest 
+             ("false", rest) -> TokenFalse : lexer rest 

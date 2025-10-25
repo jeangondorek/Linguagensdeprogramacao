@@ -1,6 +1,7 @@
-module Main where
+module Main where 
 
-import Lexer
-import Parser
+import Lexer 
+import Parser 
+import Interpreter
 
-main = getContents >>= print . parser . lexer
+main = getContents >>= print . parser . lexer 
