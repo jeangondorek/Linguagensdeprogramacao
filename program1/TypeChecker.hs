@@ -22,3 +22,11 @@ typeof (And e1 e2) = case (typeof e1, typeof e2) of
 typeof (Or e1 e2) = case (typeof e1, typeof e2) of
                      (Just TBool, Just TBool) -> Just TBool
                      _ -> Nothing 
+
+typeof (If e e1 e2) = case typeof e of 
+                        Just TBool -> case (typeof e1, typeof e2) of
+                                (Just t1, Just t2) | t1 == t2 -> Just t1
+                                                   | otherwise -> Nothing
+                                _ -> Nothing
+                        _ -> Nothing
+

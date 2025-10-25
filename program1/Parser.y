@@ -1,28 +1,30 @@
 {
-module Parser where
+module Parser where 
 
-import Lexer
+import Lexer 
 }
 
-%name parser
-%tokentype { Token } 
+%name parser 
+%tokentype { Token }
 %error { parseError }
 
-%left '+' '-'
+%left '+'
+%left '-'
 %left '*'
 
-%token
-    num        { TokenNum $$ }
-    true       { TokenTrue }
-    false      { TokenFalse }
-    '+'        { TokenPlus }
-    '*'        { TokenTimes }
-    "&&"       { TokenAnd }
-    "||"       { TokenOr }
-    '('        { TokenLParen }
-    ')'        { TokenRParen }
+%token 
+    num             { TokenNum $$ }
+    true            { TokenTrue }
+    false           { TokenFalse }
+    '+'             { TokenPlus }
+    '-'             { TokenMinus }
+    '*'             { TokenTimes }
+    "&&"            { TokenAnd }
+    "||"            { TokenOr }
+    '('             { TokenLParen }
+    ')'             { TokenRParen }
 
-%%
+%% 
 
 Exp     : num           { Num $1 }
         | true          { BTrue }
@@ -33,7 +35,9 @@ Exp     : num           { Num $1 }
         | Exp "||" Exp  { Or $1 $3 }
         | '(' Exp ')'   { Paren $2 }
 
-{
-parseError :: [Token] -> a
+{ 
+
+parseError :: [Token] -> a 
 parseError _ = error "Syntax error!"
+
 }

@@ -22,11 +22,12 @@ data Expr = Num Int
           | And Expr Expr 
           | Or Expr Expr 
           | Paren Expr 
+          | If Expr Expr Expr
           deriving Show 
 
 data Ty = TNum
         | TBool
-        deriving Show
+        deriving (Show,Eq)
 
 lexer :: String -> [Token]
 lexer [] = []
