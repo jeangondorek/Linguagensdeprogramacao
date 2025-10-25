@@ -9,16 +9,16 @@ typeof (Num n) = Just TNum
 
 typeof (Add e1 e2) = case (typeof e1, typeof e2) of 
                      (Just TNum, Just TNum) -> Just TNum
-                     _ -> nothing
+                     _ -> Nothing
 
 typeof (Times e1 e2) = case (typeof e1, typeof e2) of 
                      (Just TNum, Just TNum) -> Just TNum
-                     _ -> nothing
+                     _ -> Nothing
 
 typeof (And e1 e2) = case (typeof e1, typeof e2) of 
                      (Just TBool, Just TBool) -> Just TBool
-                     _ -> nothing
+                     _ -> Nothing
 
-typeof (Or e1 e2) = case (typeof e1, typeof e2) of 
+typeof (Or e1 e2) = case (typeof e1, typeof e2) of
                      (Just TBool, Just TBool) -> Just TBool
-                     _ -> nothing
+                     _ -> Nothing 

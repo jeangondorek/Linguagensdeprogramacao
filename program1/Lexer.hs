@@ -26,7 +26,7 @@ data Expr = Num Int
 
 data Ty = TNum
         | TBool
-        deriving show
+        deriving Show
 
 lexer :: String -> [Token]
 lexer [] = []
