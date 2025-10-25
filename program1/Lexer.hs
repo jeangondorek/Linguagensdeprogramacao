@@ -24,6 +24,10 @@ data Expr = Num Int
           | Paren Expr 
           deriving Show 
 
+data Ty = TNum
+        | TBool
+        deriving show
+
 lexer :: String -> [Token]
 lexer [] = []
 lexer ('+':cs) = TokenPlus : lexer cs 
