@@ -23,6 +23,9 @@ data Expr = Num Int
           | Or Expr Expr 
           | Paren Expr 
           | If Expr Expr Expr
+          | Var String
+          | Lam String Expr
+          | App Expr Expr
           deriving Show 
 
 data Ty = TNum
